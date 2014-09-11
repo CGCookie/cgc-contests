@@ -1,5 +1,12 @@
 <?php
 
+/**
+*
+* Main class responsible for the contruction of the shortcode
+* @since 1.0
+*
+*/
+
 class cgcContestsShortcode {
 
 	function __construct(){
