@@ -27,6 +27,11 @@ if ( ! defined( 'WPINC' ) ) {
 	die;
 }
 
+// Set some constants
+define('CGC_CONTESTS_VERSION', '1.0.94');
+define('CGC_CONTESTS_DIR', plugin_dir_path( __FILE__ ));
+define('CGC_CONTESTS_URL', plugins_url( '', __FILE__ ));
+
 /*----------------------------------------------------------------------------*
  * Public-Facing Functionality
  *----------------------------------------------------------------------------*/
