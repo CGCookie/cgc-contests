@@ -16,15 +16,35 @@ class cgcContestsShortcode {
 	function shortcode( $atts, $content = null ) {
 
 		$defaults = array(
+			'id'	=> '1'
 		);
 
 		$atts = shortcode_atts( $defaults, $atts );
 
 		ob_start();
 
-			echo 'showtime';
+			echo self::cgc_contest_get_entries($atts['id']);
 
 		return ob_get_clean();
+	}
+
+	function cgc_contest_get_entries( $id = 0 ){
+
+		// bail if no id
+		if ( empty( $id ) )
+			return;
+
+		$entries = GFAPI::get_entries( $id );
+
+		// bail if no entries
+		if ( empty( $entries ) )
+			return;
+
+		foreach ( $entries as $entry ){
+
+			var_dump($entry);
+		}
+
 	}
 }
 new cgcContestsShortcode;
