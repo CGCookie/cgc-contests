@@ -16,8 +16,8 @@ class cgcContestsShortcode {
 	function shortcode( $atts, $content = null ) {
 
 		$defaults = array(
-			'id'	=> '2',
-			'position' => '3'
+			'id'	=> '',
+			'position' => ''
 		);
 
 		$atts = shortcode_atts( $defaults, $atts );
