@@ -16,27 +16,27 @@ class cgcContestsShortcode {
 	function shortcode( $atts, $content = null ) {
 
 		$defaults = array(
-			'id'	=> '',
-			'field_name' => ''
+			'id'	=> '2',
+			'position' => '3'
 		);
 
 		$atts = shortcode_atts( $defaults, $atts );
 
 		// form id
 		$id 	= $atts['id'];
-		$field 	= $atts['field_name'];
+		$position 	= $atts['position'];
 
 		ob_start();
 
-			echo self::cgc_contest_get_entries( $id, $field );
+			echo self::cgc_contest_get_entries( $id, $position );
 
 		return ob_get_clean();
 	}
 
-	function cgc_contest_get_entries( $id = 0 , $field = ''){
+	function cgc_contest_get_entries( $id = 0 , $position = 0 ){
 
 		// bail if no id
-		if ( empty ( $id ) || empty ( $field ) )
+		if ( empty ( $id ) || empty ( $position ) )
 			return;
 
 		$entries = GFAPI::get_entries( $id );
@@ -47,7 +47,8 @@ class cgcContestsShortcode {
 
 		foreach ( $entries as $entry ){
 
-			var_dump($entry);
+			echo '<pre>';
+			var_dump($entry[$position]);
 		}
 
 	}
