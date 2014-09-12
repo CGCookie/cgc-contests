@@ -16,7 +16,7 @@ class cgcContestsShortcode {
 	function shortcode( $atts, $content = null ) {
 
 		$defaults = array(
-			'id'	=> '1',
+			'id'	=> '',
 			'field_name' => ''
 		);
 
