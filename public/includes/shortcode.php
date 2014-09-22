@@ -30,15 +30,17 @@ class cgcContestsShortcode {
 	function shortcode( $atts, $content = null ) {
 
 		$defaults = array(
-			'id'	=> '',
-			'position' => ''
+			'id'		=> '',
+			'position' 	=> '',
+			'limit'		=> ''
 		);
 
 		$atts = shortcode_atts( $defaults, $atts );
 
-		// form id and url from entry position
+		// get options
 		$id 	= $atts['id'];
 		$url 	= $atts['position'];
+		$limit  = $atts['limit'];
 
 		// incase there are ever multiple on one page (likely never but we never know)
 		static $instance = 0;
@@ -56,7 +58,7 @@ class cgcContestsShortcode {
 				  	});
 				</script>
 
-				<?php echo self::cgc_contest_get_entries( $id, $url ); ?>
+				<?php echo self::cgc_contest_get_entries( $id, $url, $limit ); ?>
 
 			</div>
 		<?php
@@ -65,7 +67,7 @@ class cgcContestsShortcode {
 	}
 
 	// get entries from gravity forms api
-	function cgc_contest_get_entries( $id = 0 , $url = '' ){
+	function cgc_contest_get_entries( $id = 0 , $url = '', $limit = '' ){
 
 		// get entries via GF api with entry id
 		$entries = GFAPI::get_entries( $id );
@@ -86,9 +88,16 @@ class cgcContestsShortcode {
 			// get the sketchfab url from the entry and build the iframe url
 			$source = $entry[$url] ? sprintf('%s/embed', $entry[$url] ) : null;
 
+			// add a class to every 3rd
 			if ( 0 == $i % 3 ) $last = 'last'; else $last = null;
 
+			// draw the item
 			printf('<div class="cgc-contest-entry %s"><iframe width="310" height="230" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-src="%s" onload=lzld(this) frameborder="0" allowfullscreen mozallowfullscreen="true" webkitallowfullscreen="true" onmousewheel=""></iframe></div>', $last, $source );
+
+			// if a limit is set then break at the set limit
+			if ( $limit && 0 == $i % $limit ) {
+				break;
+			}
 		}
 
 	}
