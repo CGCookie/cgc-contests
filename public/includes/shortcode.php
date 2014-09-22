@@ -92,7 +92,7 @@ class cgcContestsShortcode {
 			if ( 0 == $i % 3 ) $last = 'last'; else $last = null;
 
 			// draw the item
-			printf('<div class="cgc-contest-entry %s"><iframe width="310" height="230" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-src="%s" onload=lzld(this) frameborder="0" allowfullscreen mozallowfullscreen="true" webkitallowfullscreen="true" onmousewheel=""></iframe></div>', $last, $source );
+			printf('<div class="cgc-contest-entry %s"><div class="cgc-contest-entry-inner"><iframe width="310" height="230" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-src="%s" onload=lzld(this) frameborder="0" allowfullscreen mozallowfullscreen="true" webkitallowfullscreen="true" onmousewheel=""></iframe></div></div>', $last, $source );
 
 			// if a limit is set then break at the set limit
 			if ( $limit && 0 == $i % $limit ) {
