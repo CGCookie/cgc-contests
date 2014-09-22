@@ -22,34 +22,54 @@ class cgcContestsShortcode {
 
 		$atts = shortcode_atts( $defaults, $atts );
 
-		// form id
+		// form id and url from entry position
 		$id 	= $atts['id'];
-		$position 	= $atts['position'];
+		$url 	= $atts['position'];
 
 		ob_start();
 
-			echo self::cgc_contest_get_entries( $id, $position );
+			echo self::cgc_contest_get_entries( $id, $url );
 
 		return ob_get_clean();
 	}
 
-	function cgc_contest_get_entries( $id = 0 , $position = 0 ){
+	function cgc_contest_get_entries( $id = 0 , $url = '' ){
 
-		// bail if no id
-		if ( empty ( $id ) || empty ( $position ) )
-			return;
-
+		// get entries via GF api with entry id
 		$entries = GFAPI::get_entries( $id );
 
-		// bail if no entries
-		if ( empty( $entries ) )
+		// bail if no data
+		if ( !$id || !$url || !$entries )
 			return;
 
-		foreach ( $entries as $entry ){
+		// incase there are ever multiple on one page (likely never but we never know)
+		static $instance = 0;
+		$instance++;
+		$unique = sprintf('cgc-contest-%s-%s',get_the_ID(), $instance);
 
-			echo '<pre>';
-			var_dump($entry[$position]);
-		}
+		ob_start();
+
+		?><div id="<?php echo $unique;?>" class="cgc-contests"><?php
+
+			foreach ( $entries as $entry ){
+
+				// bail if no url in entry
+				if ( empty( $entry[$url] ) )
+					return;
+
+				// get the sketchfab url from the entry
+				$source = $entry[$url] ? sprintf('%s/embed', $entry[$url] ) : null;;
+
+				?>
+					<div class="cgc-contest-entry">
+						<iframe width="640" height="480" src="<?php echo $source;?>" frameborder="0" allowfullscreen mozallowfullscreen="true" webkitallowfullscreen="true" onmousewheel=""></iframe>
+					</div>
+				<?php
+			}
+
+		?></div><?php
+
+		return ob_get_clean();
 
 	}
 }
