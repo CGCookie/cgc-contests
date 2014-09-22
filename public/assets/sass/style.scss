@@ -1,0 +1,15 @@
+@import "../../../../../themes/cgcookie-4.0/cgc-sass-framework/cgc-global-variables.scss";
+@import "../../../../../themes/cgcookie-4.0/cgc-sass-framework/mixins/all-mixins.scss";
+
+.cgc-contest-wrap {
+	@include clearfix();
+
+	.cgc-contest-entry {
+		display:inline-block;
+		margin:0 16px 16px 0;
+
+		&.last {
+			margin-right:0;
+		}
+	}
+}

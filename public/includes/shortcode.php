@@ -42,6 +42,9 @@ class cgcContestsShortcode {
 		if ( !$id || !$url || !$entries )
 			return;
 
+		// enqueue style
+		wp_enqueue_style('cgc-contest-style', CGC_CONTESTS_URL.'/public/assets/css/style.css', CGC_CONTESTS_VERSION, true);
+
 		// incase there are ever multiple on one page (likely never but we never know)
 		static $instance = 0;
 		$instance++;
@@ -49,20 +52,26 @@ class cgcContestsShortcode {
 
 		ob_start();
 
-		?><div id="<?php echo $unique;?>" class="cgc-contests"><?php
+		?>
+		<div id="<?php echo $unique;?>" class="cgc-contest-wrap"><?php
 
+			$i = 0;
 			foreach ( $entries as $entry ){
+
+				$i++;
 
 				// bail if no url in entry
 				if ( empty( $entry[$url] ) )
 					return;
 
 				// get the sketchfab url from the entry
-				$source = $entry[$url] ? sprintf('%s/embed', $entry[$url] ) : null;;
+				$source = $entry[$url] ? sprintf('%s/embed', $entry[$url] ) : null;
+
+				if ( 0 == $i % 3 ) $last = 'last'; else $last = null;
 
 				?>
-					<div class="cgc-contest-entry">
-						<iframe width="640" height="480" src="<?php echo $source;?>" frameborder="0" allowfullscreen mozallowfullscreen="true" webkitallowfullscreen="true" onmousewheel=""></iframe>
+					<div class="cgc-contest-entry <?php echo $last;?>">
+						<iframe width="310" height="230" src="<?php echo $source;?>" frameborder="0" allowfullscreen mozallowfullscreen="true" webkitallowfullscreen="true" onmousewheel=""></iframe>
 					</div>
 				<?php
 			}
