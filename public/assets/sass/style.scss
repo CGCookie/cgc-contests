@@ -11,5 +11,9 @@
 		&.last {
 			margin-right:0;
 		}
+
+		@media(max-width:995px) {
+			&.last {margin-right:16px;}
+		}
 	}
 }
