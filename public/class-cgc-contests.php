@@ -59,6 +59,17 @@ class CGC_Contests {
 		require_once(CGC_CONTESTS_DIR.'/public/includes/shortcode.php');
 		require_once(CGC_CONTESTS_DIR.'/includes/template-load.php');
 
+		add_filter('body_class', array($this,'body_class'));
+
+	}
+
+	function body_class($classes){
+
+
+	    if ( cgc_contest_meta( get_the_ID(), '_cgc_contest_page' ) )
+			$classes[] = 'cgc-contest-page';
+
+		return $classes;
 	}
 
 	/**
