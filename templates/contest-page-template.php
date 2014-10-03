@@ -36,7 +36,6 @@
 
 			<div class="cgc-contest-info">
 				<div class="cgc-contest-inner cgc-contest-back">
-					<h3>Halloween is upon us</h3>
 					<?php the_content();?>
 				</div>
 			</div>
