@@ -1,3 +1,59 @@
+// body
+.cgc-contest-page {
+
+}
+
+.cgc-contest-back{
+	background:$background;
+	background:$text_background;
+	padding:15px;
+}
+
 .cgc-contest-header {
 	text-align:center;
+}
+
+// similar
+.cgc-contest-sponsors-wrap,
+.cgc-contest-awards-wrap,
+.cgc-contest-cta-wrap,
+.cgc-contest-recent-entries {
+	padding-left:15px;
+	padding-right:15px;
+	margin-bottom:$margin;
+
+}
+
+.cgc-contest-main {
+	@include clearfix();
+	margin-bottom:$margin;
+
+	h3 {
+		margin-top:0;
+		border-bottom:1px solid $border_color;
+	}
+	.cgc-contest-info {
+		@include column(9);
+	}
+	.cgc-contest-sidebar {
+		@include column(3);
+	}
+}
+
+// sponsors
+.cgc-contest-sponsors-wrap {
+
+	h4 {
+		text-align:center;
+	}
+}
+
+// awards
+.cgc-contest-awards-wrap {
+
+}
+
+// entries
+.cgc-contest-recent-entries {
+
 }

@@ -12,30 +12,37 @@
 		<section class="cgc-contest-main">
 
 			<div class="cgc-contest-info">
-				<h2>Halloween is upon us</h2>
-				<?php the_content();?>
+				<div class="cgc-contest-inner cgc-contest-back">
+					<h3>Halloween is upon us</h3>
+					<?php the_content();?>
+				</div>
 			</div>
 			<div class="cgc-contest-sidebar">
-				<h2>Challenge Rules</h2>
-				<ul class="cgc-contest-rules">
-					BUILD FUNCTION GET RULES
-				</ul>
+				<div class="cgc-contest-inner cgc-contest-back">
+					<h3>Challenge Rules</h3>
+					<ul class="cgc-contest-rules">
+						BUILD FUNCTION GET RULES
+					</ul>
+				</div>
 			</div>
 
 		</section>
-		<section class="cgc-contest-sponsors-wrap">
-			<h2>The sponsors behind the challenge.</h2>
+		<section class="cgc-contest-sponsors-wrap ">
+			<div class="cgc-contest-inner cgc-contest-back">
+				<h4>The sponsors behind the challenge.</h4>
 
-			<ul class="cgc-contest-sponsor-logos">
-				BUILD FUNCTION GET LOGOS
-			</ul>
-
+				<ul class="cgc-contest-sponsor-logos">
+					BUILD FUNCTION GET LOGOS
+				</ul>
+			</div>
 		</section>
 
 		<section class="cgc-contest-awards-wrap">
-			<ul class="cgc-contest-awards">
-				BUILD FUNCTION GET AWARDS
-			</ul>
+			<div class="cgc-contest-inner cgc-contest-back">
+				<ul class="cgc-contest-awards">
+					BUILD FUNCTION GET AWARDS
+				</ul>
+			</div>
 		</section>
 
 		<div class="cgc-contest-cta-wrap">
@@ -44,7 +51,9 @@
 		</div>
 
 		<section class="cgc-contest-recent-entries">
-			<?php echo do_shortcode('[cgc_contests id=""]');?>
+			<div class="cgc-contest-inner cgc-contest-back">
+				<?php echo do_shortcode('[cgc_contests id=""]');?>
+			</div>
 		</section>
 
 	</div>
