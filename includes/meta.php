@@ -33,6 +33,20 @@ class cgcContestsMeta {
 			'pages' => array('page'),
 			'fields' => array(
 				array(
+					'id'			=> '_cgc_contest_gform_id',
+					'name'			=> 'Gravity Form ID',
+					'type'			=> 'text_small',
+					'desc'			=> 'Enter the ID of the Gravity Form to be used to display the recent entries',
+					'cols'			=> 6
+				),
+				array(
+					'id'			=> '_cgc_contest_gform_field',
+					'name'			=> 'Gravity Form Field ID',
+					'type'			=> 'text_small',
+					'desc'			=> 'Enter the ID of the Field ID in the Gravity Form chosen above with the Entry URL.',
+					'cols'			=> 6
+				),
+				array(
 					'id' 			=> '_cgc_contest_banner',
 					'name' 			=> __('Contest Banner Image', 'cgc-contests'),
 					'type' 			=> 'image',

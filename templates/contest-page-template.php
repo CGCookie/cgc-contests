@@ -11,9 +11,13 @@
 	$banner     	= wp_get_attachment_url($banner_src,'full');
 	$accent_color   = cgc_contest_meta( get_the_ID(), '_cgc_contest_color' );
 
+	$gform			= cgc_contest_meta( get_the_ID(), '_cgc_contest_gform_id' );
+	$gfield			= cgc_contest_meta( get_the_ID(), '_cgc_contest_gform_field' );
 ?>
 <style>
 .page-id-<?php echo get_the_ID();?> .cgc-contest-rules li:before{color:<?php echo $accent_color[0];?>;}
+.page-id-<?php echo get_the_ID();?> .cgc-contest-page .page-content .button{background:<?php echo $accent_color[0];?>;}
+.page-id-<?php echo get_the_ID();?> .cgc-contest-page .page-content a{color:<?php echo $accent_color[0];?>;}
 </style>
 <div class="page-content">
 
@@ -105,7 +109,8 @@
 
 		<section class="cgc-contest-recent-entries">
 			<div class="cgc-contest-inner cgc-contest-back">
-				<?php echo do_shortcode('[cgc_contests id=""]');?>
+				<h3>Recent Challenge Entries</h3>
+				<?php echo do_shortcode('[cgc_contest id="'.$gform[0].'" position="'.$gfield[0].'"]');?>
 			</div>
 		</section>
 

@@ -63,12 +63,15 @@
 
 }
 
+.cgc-contest-recent-entries,
 .cgc-contest-main {
 	@include clearfix();
 	margin-bottom:$margin;
 
 	h3 {
 		margin-top:0;
+		line-height:26px;
+		padding-bottom:8px;
 		border-bottom:1px solid $border_color;
 	}
 	.cgc-contest-info {
@@ -83,15 +86,17 @@
 .cgc-contest-rules {
 	li {
 		position:relative;
-		padding-left:40px;
+		padding-left:35px;
+		margin-bottom:$margin;
+		line-height:20px;
 
 		&:before {
 			content:'\f14a';
 			font-family:FontAwesome;
 			position:absolute;
 			left:0;
-			top:2px;
-			font-size:20px;
+			top:4px;
+			font-size:22px;
 			color:$blenderColor;
 		}
 	}
@@ -106,6 +111,7 @@
 	}
 	h4 {
 		text-align:center;
+		margin-bottom:$margin;
 	}
 
 	.cgc-contest-sponsor-logos {
@@ -113,6 +119,12 @@
 		li {
 			@include column(4);
 			margin-bottom:0;
+			text-align:center;
+
+			img {
+				display:block;
+				margin:0 auto;
+			}
 
 			&:first-child,
 			&:nth-child(2) {
@@ -152,6 +164,7 @@
 	}
 }
 
+// cta
 .cgc-contest-cta-wrap {
 	text-align:center;
 	padding-top:$margin;
