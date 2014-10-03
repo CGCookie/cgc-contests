@@ -93,7 +93,7 @@
 		</section>
 
 		<div class="cgc-contest-cta-wrap">
-			<a href="#">Submit your entry</a>
+			<a class="button" href="#">Submit your entry</a>
 			<p>Entries must be recieved by FUNTION TO GET ENTRY DEADLINE</p>
 		</div>
 
