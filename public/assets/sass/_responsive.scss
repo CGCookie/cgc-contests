@@ -1,0 +1,25 @@
+
+@media(max-width:768px) {
+	.cgc-contest-wrap {
+		.cgc-contest-entry {
+			width:48.666%;
+
+			&.last {
+				margin-right:1.5%;
+			}
+
+			&:nth-child(odd) {
+				margin-right:0;
+			}
+		}
+	}
+}
+
+@media(max-width:480px) {
+	.cgc-contest-wrap {
+		.cgc-contest-entry {
+			width:100%;
+			margin:0 auto 14px;
+		}
+	}
+}

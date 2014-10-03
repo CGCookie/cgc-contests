@@ -60,16 +60,8 @@ class CGC_Contests {
 		require_once(CGC_CONTESTS_DIR.'/includes/template-load.php');
 
 		add_filter('body_class', array($this,'body_class'));
+		add_action('wp_enqueue_scripts', 	array($this,'scripts'));
 
-	}
-
-	function body_class($classes){
-
-
-	    if ( cgc_contest_meta( get_the_ID(), '_cgc_contest_page' ) )
-			$classes[] = 'cgc-contest-page';
-
-		return $classes;
 	}
 
 	/**
@@ -233,6 +225,29 @@ class CGC_Contests {
 	 */
 	private static function single_deactivate() {
 		// @TODO: Define deactivation functionality here
+	}
+
+	function body_class($classes){
+
+
+	    if ( cgc_contest_meta( get_the_ID(), '_cgc_contest_page' ) )
+			$classes[] = 'cgc-contest-page';
+
+		return $classes;
+	}
+
+	function scripts(){
+
+		global $post;
+
+		$classes = get_body_class();
+
+		if ( isset( $post->post_content ) && has_shortcode( $post->post_content, 'cgc_contest' ) || in_array('cgc-contest-page',$classes) ) {
+
+			wp_enqueue_script('cgc-contest-script', CGC_CONTESTS_URL.'/public/assets/js/lazyload.min.js', CGC_CONTESTS_VERSION, array('jquery') );
+			wp_enqueue_script('cgc-contest-display', CGC_CONTESTS_URL.'/public/assets/js/general.js', array('cgc-contest-script', 'jquery'), true);
+			wp_enqueue_style('cgc-contest-style', CGC_CONTESTS_URL.'/public/assets/css/style.css', CGC_CONTESTS_VERSION, true );
+		}
 	}
 
 

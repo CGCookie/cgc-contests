@@ -11,21 +11,8 @@ class cgcContestsShortcode {
 
 	function __construct(){
 		add_shortcode('cgc_contest', 		array($this,'shortcode'));
-		add_action('wp_enqueue_scripts', 	array($this,'scripts'));
 	}
 
-	// load style and script only if page has a the contest shortcode
-	function scripts(){
-
-		global $post;
-
-		if ( isset( $post->post_content ) && has_shortcode( $post->post_content, 'cgc_contest' ) ) {
-
-			wp_enqueue_script('cgc-contest-script', CGC_CONTESTS_URL.'/public/assets/js/lazyload.min.js', CGC_CONTESTS_VERSION, array('jquery') );
-			wp_enqueue_script('cgc-contest-display', CGC_CONTESTS_URL.'/public/assets/js/general.js', array('cgc-contest-script', 'jquery'), true);
-			wp_enqueue_style('cgc-contest-style', CGC_CONTESTS_URL.'/public/assets/css/style.css', CGC_CONTESTS_VERSION, true );
-		}
-	}
 
 	// build the shortcode
 	function shortcode( $atts, $content = null ) {
@@ -52,7 +39,7 @@ class cgcContestsShortcode {
 
 		?>
 			<div id="cgc-contest-loading" class="cgc-contest-loading"><div class="cgc-contest-loader"></div><span>Loading Contest Entries...</span></div>
-			<div id="<?php echo $unique;?>" class="cgc-contest-wrap">
+			<div id="<?php echo $unique;?>" class="cgc-contest-sc-wrap">
 
 				<script>
 				  	var lazy = lazyload({
