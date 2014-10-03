@@ -37,14 +37,21 @@ class cgcContestsMeta {
 					'name'			=> 'Gravity Form ID',
 					'type'			=> 'text_small',
 					'desc'			=> 'Enter the ID of the Gravity Form to be used to display the recent entries',
-					'cols'			=> 6
+					'cols'			=> 4
 				),
 				array(
 					'id'			=> '_cgc_contest_gform_field',
 					'name'			=> 'Gravity Form Field ID',
 					'type'			=> 'text_small',
 					'desc'			=> 'Enter the ID of the Field ID in the Gravity Form chosen above with the Entry URL.',
-					'cols'			=> 6
+					'cols'			=> 4
+				),
+				array(
+					'id'			=> '_cgc_contest_expiration',
+					'name'			=> 'Contest Expiration Date',
+					'type'			=> 'date_unix',
+					'desc'			=> 'Choose an expiration date for this contest.',
+					'cols'			=> 4
 				),
 				array(
 					'id' 			=> '_cgc_contest_banner',

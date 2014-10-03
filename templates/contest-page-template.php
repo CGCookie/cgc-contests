@@ -13,6 +13,11 @@
 
 	$gform			= cgc_contest_meta( get_the_ID(), '_cgc_contest_gform_id' );
 	$gfield			= cgc_contest_meta( get_the_ID(), '_cgc_contest_gform_field' );
+
+	$expires       = get_post_meta( get_the_ID(), '_cgc_contest_expiration', true );
+	$datetime 		= new DateTime($expires);
+	$date 			= $datetime->format('F j, Y');
+
 ?>
 <style>
 .page-id-<?php echo get_the_ID();?> .cgc-contest-rules li:before{color:<?php echo $accent_color[0];?>;}
@@ -61,7 +66,7 @@
 		</section>
 		<section class="cgc-contest-sponsors-wrap ">
 			<div class="cgc-contest-inner cgc-contest-back">
-				<h4>The sponsors behind the challenge.</h4>
+				<h4>The sponsors behind the challenge</h4>
 
 				<ul class="cgc-contest-sponsor-logos">
 					<?php
@@ -103,7 +108,7 @@
 
 		<div class="cgc-contest-cta-wrap">
 			<a class="button" href="#">Submit your entry</a>
-			<p>Entries must be recieved by FUNTION TO GET ENTRY DEADLINE</p>
+			<p>Entries must be recieved by <?php echo $date;?></p>
 		</div>
 
 		<section class="cgc-contest-recent-entries">
