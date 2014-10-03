@@ -46,6 +46,10 @@
 		top:50px;
 		text-shadow:0 1px 1px rgba(0,0,0,0.5);
 	}
+
+	h1 + h2 {
+		font-size:28px;
+	}
 }
 
 // similar
@@ -73,6 +77,23 @@
 	}
 	.cgc-contest-sidebar {
 		@include column(4);
+	}
+}
+
+.cgc-contest-rules {
+	li {
+		position:relative;
+		padding-left:40px;
+
+		&:before {
+			content:'\f14a';
+			font-family:FontAwesome;
+			position:absolute;
+			left:0;
+			top:2px;
+			font-size:20px;
+			color:$blenderColor;
+		}
 	}
 }
 

@@ -6,17 +6,23 @@
 	$rules 			= cgc_contest_meta( get_the_ID(),'_cgc_contest_rules' );
 	$sponsors 		= cgc_contest_meta( get_the_ID(), '_cgc_contest_sponsors' );
 	$awards  		= cgc_contest_meta( get_the_ID(),'_cgc_contest_awards' );
+	$subtitle       = cgc_contest_meta( get_the_ID(), '_cgc_contest_subtitle');
 	$banner_src   	= get_post_meta( get_the_ID(), '_cgc_contest_banner', true );
 	$banner     	= wp_get_attachment_url($banner_src,'full');
+	$accent_color   = cgc_contest_meta( get_the_ID(), '_cgc_contest_color' );
 
 ?>
-
+<style>
+.page-id-<?php echo get_the_ID();?> .cgc-contest-rules li:before{color:<?php echo $accent_color[0];?>;}
+</style>
 <div class="page-content">
 
 	<section class="cgc-contest-header">
 		<div class="cgc-contest-header-inner">
-			<h1>Title</h1>
-			<h2>Section</h2>
+			<?php the_title('<h1>','</h1>');?>
+			<?php if ( $subtitle ) { ?>
+				<h2><?php echo $subtitle[0];?></h2>
+			<?php } ?>
 		</div>
 		<div class="cgc-contest-header-img" style="background-image:url('<?php echo $banner;?>');"></div>
 	</section>

@@ -23,7 +23,7 @@ class cgcContestsMeta {
 				array(
 					'id' 							=> '_cgc_contest_page',
 					'name' 							=> __('Make this page a Contest Page', 'cgc-contests'),
-					'type' 							=> 'checkbox',
+					'type' 							=> 'checkbox'
 				)
 			)
 		);
@@ -37,6 +37,20 @@ class cgcContestsMeta {
 					'name' 			=> __('Contest Banner Image', 'cgc-contests'),
 					'type' 			=> 'image',
 					'desc'			=> __('Upload a banner image for this contest. This can be different from the featured image that is picked up on social networks.', 'cgc-contests'),
+					'cols'			=> 6
+				),
+				array(
+					'id'						=> '_cgc_contest_subtitle',
+					'name'						=> 'Contest Subtitle',
+					'type'						=> 'textarea',
+					'desc'						=> 'Add some text to be displayed beneath the main page title.',
+					'cols'						=> 6
+				),
+				array(
+					'id'						=> '_cgc_contest_color',
+					'name'						=> 'Contest Accent Color',
+					'type'						=> 'colorpicker',
+					'desc'						=> 'Supply an accent color to be used throughout the contest page.'
 				),
 				array(
 					'id' 			=> '_cgc_contest_rules',
