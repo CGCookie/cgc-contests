@@ -54,9 +54,10 @@ class CGC_Contests {
 		// Activate plugin when new blog is added
 		add_action( 'wpmu_new_blog', array( $this, 'activate_new_site' ) );
 
+		require_once(CGC_CONTESTS_DIR.'/includes/meta.php');
 		require_once(CGC_CONTESTS_DIR.'/includes/helpers.php');
 		require_once(CGC_CONTESTS_DIR.'/public/includes/shortcode.php');
-
+		require_once(CGC_CONTESTS_DIR.'/includes/template-load.php');
 
 	}
 
