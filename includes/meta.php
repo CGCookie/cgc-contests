@@ -72,7 +72,7 @@ class cgcContestsMeta {
 				),
 				array(
 					'id' 			=> '_cgc_contest_awards',
-					'name' 			=> __('Contest Rules', 'cgc-contests'),
+					'name' 			=> __('Contest Awards', 'cgc-contests'),
 					'type' 			=> 'wysiwyg',
 					'options' => array(
 					      'textarea_rows' => 5

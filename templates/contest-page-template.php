@@ -3,10 +3,11 @@
 <?php
 
 	// get meta
-	$rules = cgc_contest_meta( get_the_ID(),'_cgc_contest_rules' );
-	$sponsors = cgc_contest_meta( get_the_ID(), '_cgc_contest_sponsors' );
-	$banner_src   = get_post_meta( get_the_ID(), '_cgc_contest_banner', true );
-	$banner     = wp_get_attachment_url($banner_src,'full');
+	$rules 			= cgc_contest_meta( get_the_ID(),'_cgc_contest_rules' );
+	$sponsors 		= cgc_contest_meta( get_the_ID(), '_cgc_contest_sponsors' );
+	$awards  		= cgc_contest_meta( get_the_ID(),'_cgc_contest_awards' );
+	$banner_src   	= get_post_meta( get_the_ID(), '_cgc_contest_banner', true );
+	$banner     	= wp_get_attachment_url($banner_src,'full');
 
 ?>
 
@@ -76,7 +77,17 @@
 		<section class="cgc-contest-awards-wrap">
 			<div class="cgc-contest-inner cgc-contest-back">
 				<ul class="cgc-contest-awards">
-					BUILD FUNCTION GET AWARDS
+					<?php
+						if ( $awards ):
+
+							foreach ( $awards as $award ):
+
+								printf('<li>%s</li>', wpautop($award) );
+
+							endforeach;
+
+						endif;
+					?>
 				</ul>
 			</div>
 		</section>
