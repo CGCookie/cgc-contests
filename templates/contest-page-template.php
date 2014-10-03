@@ -1,5 +1,13 @@
 <?php get_header();?>
 
+<?php
+
+	// get meta
+	$rules = cgc_contest_meta( get_the_ID(),'_cgc_contest_rules' );
+	$sponsors = cgc_contest_meta( get_the_ID(), '_cgc_contest_sponsors' );
+
+?>
+
 <div class="page-content">
 
 	<section class="cgc-contest-header">
@@ -21,7 +29,17 @@
 				<div class="cgc-contest-inner cgc-contest-back">
 					<h3>Challenge Rules</h3>
 					<ul class="cgc-contest-rules">
-						BUILD FUNCTION GET RULES
+						<?php
+							if ( $rules ):
+
+								foreach ( $rules as $rule ):
+
+									printf('<li>%s</li>', $rule);
+
+								endforeach;
+
+							endif;
+						?>
 					</ul>
 				</div>
 			</div>
@@ -32,7 +50,21 @@
 				<h4>The sponsors behind the challenge.</h4>
 
 				<ul class="cgc-contest-sponsor-logos">
-					BUILD FUNCTION GET LOGOS
+					<?php
+						if ( $sponsors ):
+
+							foreach ( $sponsors as $sponsor ):
+
+								$getimg = $sponsor['img'];
+								$img    = wp_get_attachment_image($getimg);
+								$link   = $sponsor['link'];
+
+								printf('<li><a href="%s">%s</a></li>', $link, $img);
+
+							endforeach;
+
+						endif;
+					?>
 				</ul>
 			</div>
 		</section>

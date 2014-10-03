@@ -1,6 +1,10 @@
 // body
 .cgc-contest-page {
-
+	ul {
+		list-style:none;
+		padding:0;
+		margin:0;
+	}
 }
 
 .cgc-contest-back{
@@ -33,18 +37,30 @@
 		border-bottom:1px solid $border_color;
 	}
 	.cgc-contest-info {
-		@include column(9);
+		@include column(8);
 	}
 	.cgc-contest-sidebar {
-		@include column(3);
+		@include column(4);
 	}
 }
+
+// rules
+
 
 // sponsors
 .cgc-contest-sponsors-wrap {
 
 	h4 {
 		text-align:center;
+	}
+
+	.cgc-contest-sponsor-logos {
+		@include clearfix();
+		li {
+			width:31%;
+			margin:0 1%;
+			float:left;
+		}
 	}
 }
 
