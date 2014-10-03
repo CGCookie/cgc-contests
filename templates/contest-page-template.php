@@ -15,8 +15,6 @@
 	$gfield			= cgc_contest_meta( get_the_ID(), '_cgc_contest_gform_field' );
 
 	$expires       = get_post_meta( get_the_ID(), '_cgc_contest_expiration', true );
-	$datetime 		= new DateTime($expires);
-	$date 			= $datetime->format('F j, Y');
 
 ?>
 <style>
@@ -108,7 +106,7 @@
 
 		<div class="cgc-contest-cta-wrap">
 			<a class="button" href="#">Submit your entry</a>
-			<p>Entries must be recieved by <?php echo $date;?></p>
+			<p>Entries must be recieved by <?php echo $expires;?></p>
 		</div>
 
 		<section class="cgc-contest-recent-entries">

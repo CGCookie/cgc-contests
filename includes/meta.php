@@ -49,7 +49,7 @@ class cgcContestsMeta {
 				array(
 					'id'			=> '_cgc_contest_expiration',
 					'name'			=> 'Contest Expiration Date',
-					'type'			=> 'date_unix',
+					'type'			=> 'date',
 					'desc'			=> 'Choose an expiration date for this contest.',
 					'cols'			=> 4
 				),
