@@ -29,9 +29,15 @@ class cgcContestsMeta {
 		);
 
 		$meta_boxes[] = array(
-			'title' => __('Contest Rules', 'cgc-contests'),
+			'title' => __('Contest Setup', 'cgc-contests'),
 			'pages' => array('page'),
 			'fields' => array(
+				array(
+					'id' 			=> '_cgc_contest_banner',
+					'name' 			=> __('Contest Banner Image', 'cgc-contests'),
+					'type' 			=> 'image',
+					'desc'			=> __('Upload a banner image for this contest. This can be different from the featured image that is picked up on social networks.', 'cgc-contests'),
+				),
 				array(
 					'id' 			=> '_cgc_contest_rules',
 					'name' 			=> __('Contest Rules', 'cgc-contests'),
@@ -40,14 +46,7 @@ class cgcContestsMeta {
 					'repeatable_max' => 20,
 					'sortable'		=> true,
 					'desc'			=> __('Add some rules for this contest', 'cgc-contests'),
-				)
-			)
-		);
-
-		$meta_boxes[] = array(
-			'title' => __('Contest Sponsors', 'cgc-contests'),
-			'pages' => array('page'),
-			'fields' => array(
+				),
 				array(
 					'id' 			=> '_cgc_contest_sponsors',
 					'name' 			=> __('Contest Sponsors', 'cgc-contests'),
@@ -70,6 +69,18 @@ class cgcContestsMeta {
 							'cols'	=> 8
 						)
 					)
+				),
+				array(
+					'id' 			=> '_cgc_contest_awards',
+					'name' 			=> __('Contest Rules', 'cgc-contests'),
+					'type' 			=> 'wysiwyg',
+					'options' => array(
+					      'textarea_rows' => 5
+					),
+					'repeatable'     => true,
+					'repeatable_max' => 3,
+					'sortable'		=> true,
+					'desc'			=> __('Add some awards for this contest.', 'cgc-contests'),
 				)
 			)
 		);

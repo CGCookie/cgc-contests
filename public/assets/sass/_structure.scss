@@ -5,6 +5,16 @@
 		padding:0;
 		margin:0;
 	}
+	.page-content {
+		position:relative;
+		top:-15px;
+
+		.page-content-inner {
+			padding:0 15px;
+			position:relative;
+			top:-150px;
+		}
+	}
 }
 
 .cgc-contest-back{
@@ -15,6 +25,27 @@
 
 .cgc-contest-header {
 	text-align:center;
+	position:relative;
+	height:550px;
+
+	.cgc-contest-header-img {
+		position:absolute;
+		left:0;
+		top:0;
+		height:100%;
+		width:100%;
+		z-index:0;
+		background-size:cover;
+		background-repeat:no-repeat;
+		background-position:center center;
+	}
+
+	.cgc-contest-header-inner {
+		position:relative;
+		z-index:1;
+		top:50px;
+		text-shadow:0 1px 1px rgba(0,0,0,0.5);
+	}
 }
 
 // similar

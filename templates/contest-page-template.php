@@ -5,15 +5,19 @@
 	// get meta
 	$rules = cgc_contest_meta( get_the_ID(),'_cgc_contest_rules' );
 	$sponsors = cgc_contest_meta( get_the_ID(), '_cgc_contest_sponsors' );
+	$banner_src   = get_post_meta( get_the_ID(), '_cgc_contest_banner', true );
+	$banner     = wp_get_attachment_url($banner_src,'full');
 
 ?>
 
 <div class="page-content">
 
 	<section class="cgc-contest-header">
-		<h1>Title</h1>
-		<h2>Section</h2>
-		<div class="cgc-contest-header-img" style="background-image:url(http://placekitten.com/1200/400;background-size:cover;background-repeat:no-repeat;"></div>
+		<div class="cgc-contest-header-inner">
+			<h1>Title</h1>
+			<h2>Section</h2>
+		</div>
+		<div class="cgc-contest-header-img" style="background-image:url('<?php echo $banner;?>');"></div>
 	</section>
 	<div class="page-content-inner">
 
