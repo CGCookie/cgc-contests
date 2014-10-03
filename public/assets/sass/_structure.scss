@@ -80,7 +80,10 @@
 
 // sponsors
 .cgc-contest-sponsors-wrap {
-
+	.cgc-contest-inner {
+		padding-left:0;
+		padding-right:0;
+	}
 	h4 {
 		text-align:center;
 	}
@@ -88,16 +91,35 @@
 	.cgc-contest-sponsor-logos {
 		@include clearfix();
 		li {
-			width:31%;
-			margin:0 1%;
-			float:left;
+			@include column(4);
+			margin-bottom:0;
 		}
 	}
 }
 
 // awards
 .cgc-contest-awards-wrap {
+	.cgc-contest-inner {
+		padding-left:0;
+		padding-right:0;
+	}
+	.cgc-contest-awards {
+		@include clearfix();
 
+		li {
+			@include column(4);
+			margin-bottom:0;
+			.cgc-contest-award-inner {
+				margin-bottom:0;
+				background:lighten($black,3%);
+				padding:15px;
+
+				p {
+					margin-bottom:0;
+				}
+			}
+		}
+	}
 }
 
 // entries

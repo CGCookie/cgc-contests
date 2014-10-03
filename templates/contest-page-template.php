@@ -82,7 +82,7 @@
 
 							foreach ( $awards as $award ):
 
-								printf('<li>%s</li>', wpautop($award) );
+								printf('<li><div class="cgc-contest-award-inner">%s</div></li>', wpautop($award) );
 
 							endforeach;
 
