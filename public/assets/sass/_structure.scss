@@ -69,13 +69,12 @@
 	}
 	.cgc-contest-info {
 		@include column(8);
+		padding-right:0;
 	}
 	.cgc-contest-sidebar {
 		@include column(4);
 	}
 }
-
-// rules
 
 
 // sponsors
@@ -93,6 +92,11 @@
 		li {
 			@include column(4);
 			margin-bottom:0;
+
+			&:first-child,
+			&:nth-child(2) {
+				padding-right:0;
+			}
 		}
 	}
 }
@@ -117,6 +121,11 @@
 				p {
 					margin-bottom:0;
 				}
+			}
+
+			&:first-child,
+			&:nth-child(2) {
+				padding-right:0;
 			}
 		}
 	}
