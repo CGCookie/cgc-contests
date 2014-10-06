@@ -27,9 +27,11 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
 
 ?>
 <style>
-.page-id-<?php echo get_the_ID();?> .cgc-contest-rules li:before{color:<?php echo $accent_color[0];?>;}
-.page-id-<?php echo get_the_ID();?>.cgc-contest-page .page-content .button{background:<?php echo $accent_color[0];?>;}
+.page-id-<?php echo get_the_ID();?> .cgc-contest-rules li:before,
+.page-id-<?php echo get_the_ID();?>.cgc-contest-page .style-list li:before,
 .page-id-<?php echo get_the_ID();?>.cgc-contest-page .page-content a:not(.button){color:<?php echo $accent_color[0];?>;}
+.page-id-<?php echo get_the_ID();?>.cgc-contest-page .page-content .button{background:<?php echo $accent_color[0];?>;}
+
 </style>
 <div class="page-content">
 

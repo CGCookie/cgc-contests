@@ -15,6 +15,15 @@
 			top:-150px;
 		}
 	}
+	.styled-list{
+		li {
+			padding-left:1.5em;
+
+			&:before {
+				color:$blenderColor;
+			}
+		}
+	}
 }
 
 .cgc-contest-back{
@@ -177,8 +186,24 @@
 				}
 
 				li {
-					width:50%;
+					width:100%;
 					padding:0;
+					float:none;
+					display:block;
+				}
+				.styled-list{
+					li {
+						padding-left:1.5em;
+						margin-bottom:5px;
+
+						&:before {
+							color:$blenderColor;
+						}
+
+						&:last-child {
+							margin-bottom:0;
+						}
+					}
 				}
 			}
 
