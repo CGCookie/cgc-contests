@@ -111,7 +111,7 @@
 		</section>
 
 		<div class="cgc-contest-cta-wrap">
-			<a class="button" href="#">Submit your entry</a>
+			<a href="cgc-contest-form" data-reveal-id="cgc-contest-form" class="button cgc-open-contest-modal">Submit your entry</a>
 			<p>Entries must be recieved by <?php echo $expires;?></p>
 		</div>
 
@@ -123,7 +123,16 @@
 		</section>
 
 	</div>
-
+	<!-- Contest Modal -->
+	<div id="cgc-contest-form" class="reveal-modal" data-reveal>
+		<h3 class="reveal-modal-header">Entry Submission</h3>
+		<?php
+			gravity_form($gform[0], false, false, false, null, true);
+		?>
+		<a class="close-reveal-modal">&#215;</a>
+	</div>
 </div>
+
+
 
 <?php get_footer();?>
