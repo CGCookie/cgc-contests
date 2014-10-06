@@ -1,6 +1,12 @@
+@media(min-width:1200px) {
+	.cgc-contest-header {
+		height:600px;
+		padding-bottom:0;
+	}
+}
 
-@media(max-width:768px) {
-	.cgc-contest-wrap {
+@media(max-width:767px) {
+	.cgc-contest-sc-wrap {
 		.cgc-contest-entry {
 			width:48.666%;
 
@@ -15,11 +21,59 @@
 	}
 }
 
+@media(max-width:700px) {
+
+	.cgc-contest-main {
+		.cgc-contest-info,
+		.cgc-contest-sidebar {
+			width:100%;
+			float:none;
+			display:block;
+			margin:0 auto $margin;
+		}
+		.cgc-contest-sidebar {
+			margin-bottom:0;
+		}
+	}
+	.cgc-contest-page {
+
+		.cgc-contest-info,
+		.cgc-contest-sidebar,
+		.cgc-contest-sponsors-wrap,
+		.cgc-contest-awards-wrap,
+		.cgc-contest-cta-wrap,
+		.cgc-contest-recent-entries {
+			padding-left:0;
+			padding-right:0;
+		}
+	}
+}
+
+@media(max-width:640px) {
+	.cgc-contest-header {
+		padding-bottom:0;
+		height:310px;
+	}
+}
+
+@media(max-width:600px) {
+	.cgc-contest-page {
+		.cgc-contest-sponsors-wrap .cgc-contest-sponsor-logos li,
+		.cgc-contest-awards-wrap .cgc-contest-awards li {
+			width:100%;
+			float:none;
+			display:block;
+			padding:0 15px;
+			margin-bottom:$margin;
+		}
+	}
+}
+
 @media(max-width:480px) {
-	.cgc-contest-wrap {
+	.cgc-contest-sc-wrap {
 		.cgc-contest-entry {
 			width:100%;
-			margin:0 auto 14px;
+			margin:0 auto $margin;
 		}
 	}
 }
