@@ -144,6 +144,10 @@
 	.cgc-contest-inner {
 		padding-left:0;
 		padding-right:0;
+
+		ul,ol {
+			@include clearfix();
+		}
 	}
 	.cgc-contest-awards {
 		@include clearfix();

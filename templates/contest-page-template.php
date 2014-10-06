@@ -75,7 +75,7 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
 							foreach ( $sponsors as $sponsor ):
 
 								$getimg = $sponsor['img'];
-								$img    = wp_get_attachment_image($getimg);
+								$img    = wp_get_attachment_image($getimg,'full');
 								$link   = $sponsor['link'];
 
 								printf('<li><a href="%s">%s</a></li>', $link, $img);
