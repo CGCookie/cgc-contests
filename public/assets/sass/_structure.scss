@@ -61,12 +61,14 @@
 .cgc-contest-sponsors-wrap,
 .cgc-contest-awards-wrap,
 .cgc-contest-cta-wrap,
+.cgc-contest-faq-wrap,
 .cgc-contest-recent-entries {
 	padding-left:15px;
 	padding-right:15px;
 	margin-bottom:$margin;
 
 }
+
 
 .cgc-contest-recent-entries,
 .cgc-contest-main {
@@ -163,6 +165,7 @@
 
 				ul,ol {
 					@include clearfix();
+					text-align:left;
 				}
 
 				li {
@@ -176,6 +179,52 @@
 				padding-right:0;
 			}
 		}
+	}
+
+}
+
+.cgc-contest-page .cgc-contest-awards-wrap{
+	.cgc-contest-2-extra-awards {
+		margin-top:$margin;
+
+		li {
+			width:50%;
+			padding-right:15px;
+
+			&:first-child {
+				padding-right:7px;
+			}
+			&:nth-child(2) {
+				padding-left:7px;
+			}
+		}
+	}
+	.cgc-contest-1-extra-awards {
+		margin-top:$margin;
+
+		li {
+			width:100%;
+			float:none;
+			display:block;
+			padding-right:15px;
+			&:first-child {
+				margin-bottom:$margin;
+			}
+		}
+	}
+}
+
+.cgc-contest-faq-wrap {
+	margin-top:$margin * 3;
+	text-shadow:0 1px 1px rgba(0,0,0,0.6);
+	.cgc-contest-faq-question{
+		margin-bottom:0;
+	}
+	h3 {
+		margin-top:0;
+		line-height:26px;
+		padding-bottom:8px;
+		border-bottom:1px solid $border_color;
 	}
 }
 
@@ -197,5 +246,11 @@
 
 // entries
 .cgc-contest-recent-entries {
+	position:relative;
 
+	.cgc-contest-all-entries {
+		position:absolute;
+		top:12px;
+		right:30px;
+	}
 }

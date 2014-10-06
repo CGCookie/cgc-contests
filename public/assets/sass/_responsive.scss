@@ -58,12 +58,17 @@
 
 @media(max-width:600px) {
 	.cgc-contest-page {
+
+		.cgc-contest-2-extra-awards li,
+		.cgc-contest-1-extra-awards li,
 		.cgc-contest-sponsors-wrap .cgc-contest-sponsor-logos li,
 		.cgc-contest-awards-wrap .cgc-contest-awards li {
 			width:100%;
 			float:none;
 			display:block;
 			padding:0 15px;
+			padding-left:15px !important;
+			padding-right:15px !important;
 			margin-bottom:$margin;
 		}
 	}

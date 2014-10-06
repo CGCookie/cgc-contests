@@ -8,6 +8,9 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
 	$rules 			= cgc_contest_meta( get_the_ID(),'_cgc_contest_rules' );
 	$sponsors 		= cgc_contest_meta( get_the_ID(), '_cgc_contest_sponsors' );
 	$awards  		= cgc_contest_meta( get_the_ID(),'_cgc_contest_awards' );
+	$extra_awards  	= cgc_contest_meta( get_the_ID(),'_cgc_contest_extra_awards' );
+	$count_extra_awards = count($extra_awards);
+	$faqs  			= cgc_contest_meta( get_the_ID(),'_cgc_contest_faq' );
 	$subtitle       = cgc_contest_meta( get_the_ID(), '_cgc_contest_subtitle');
 	$banner_src   	= get_post_meta( get_the_ID(), '_cgc_contest_banner', true );
 	$banner     	= wp_get_attachment_url($banner_src,'full');
@@ -17,6 +20,10 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
 	$gfield			= get_post_meta( get_the_ID(), '_cgc_contest_gform_field', true );
 
 	$expires       = get_post_meta( get_the_ID(), '_cgc_contest_expiration', true );
+
+	$all_entries	= cgc_contest_meta( get_the_ID(), '_cgc_contest_entries_page' );
+
+	$entries_page  = $all_entries ? get_permalink($all_entries[0]) : null;
 
 ?>
 <style>
@@ -101,6 +108,21 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
 							endforeach;
 
 						endif;
+
+					?>
+				</ul>
+				<ul class="cgc-contest-awards cgc-contest-extra-awards cgc-contest-<?php echo $count_extra_awards;?>-extra-awards">
+					<?php
+
+						if ( $extra_awards ):
+
+							foreach ( $extra_awards as $extra_award ):
+
+								printf('<li><div class="cgc-contest-award-inner">%s</div></li>', wpautop($extra_award) );
+
+							endforeach;
+
+						endif;
 					?>
 				</ul>
 			</div>
@@ -114,7 +136,34 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
 		<section class="cgc-contest-recent-entries">
 			<div class="cgc-contest-inner cgc-contest-back">
 				<h3>Recent Challenge Entries</h3>
+				<a class="cgc-contest-all-entries" href="<?php echo $entries_page;?>">View all entries <i class="icon icon-caret-right"></i></a>
 				<?php echo do_shortcode('[cgc_contest id="'.$gform.'" position="'.$gfield.'"]');?>
+			</div>
+		</section>
+
+		<section class="cgc-contest-faq-wrap">
+			<div class="cgc-contest-inner">
+				<h3>Frequently Asked Questions</h3>
+				<ul class="cgc-contest-faq">
+					<?php
+						if ( $faqs ):
+
+							foreach ( $faqs as $faq ):
+
+								$question = $faq['question'];
+								$answer   = $faq['answer'];
+
+								?><li>
+									<h5 class="cgc-contest-faq-question"><?php echo $question;?></h5>
+									<div class="cgc-contest-faw-answer"><?php echo wpautop($answer);?></div>
+								</li><?php
+
+							endforeach;
+
+						endif;
+
+					?>
+				</ul>
 			</div>
 		</section>
 

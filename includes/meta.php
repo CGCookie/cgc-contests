@@ -68,9 +68,22 @@ class cgcContestsMeta {
 					'cols'						=> 6
 				),
 				array(
+					'id'						=> '_cgc_contest_entries_page',
+					'name'						=> 'Contest Entries Page',
+					'type'						=> 'colorpicker',
+					'cols'						=> 6,
+					'type'     					=> 'post_select',
+					'use_ajax'					 => false,
+					'query' 					=> array( 
+					    'post_type' => 'page'
+					),
+					'desc'						=> 'Choose the page that has the contest entries.'
+				),
+				array(
 					'id'						=> '_cgc_contest_color',
 					'name'						=> 'Contest Accent Color',
 					'type'						=> 'colorpicker',
+					'cols'						=> 6,
 					'desc'						=> 'Supply an accent color to be used throughout the contest page.'
 				),
 				array(
@@ -116,6 +129,41 @@ class cgcContestsMeta {
 					'repeatable_max' => 3,
 					'sortable'		=> true,
 					'desc'			=> __('Add some awards for this contest.', 'cgc-contests'),
+				),
+				array(
+					'id' 			=> '_cgc_contest_extra_awards',
+					'name' 			=> __('Extra Awards', 'cgc-contests'),
+					'type' 			=> 'wysiwyg',
+					'options' => array(
+					      'textarea_rows' => 5
+					),
+					'repeatable'     => true,
+					'repeatable_max' => 2,
+					'sortable'		=> true,
+					'desc'			=> __('These awards are additional and extra and can be used for things like "judges awards" or "community awards."', 'cgc-contests'),
+				),
+				array(
+					'id' 			=> '_cgc_contest_faq',
+					'name' 			=> __('Frequently Asked Questions', 'cgc-contests'),
+					'type' 			=> 'group',
+					'repeatable'     => true,
+					'sortable'		=> true,
+					'desc'			=> __('Add a question and accompanying answer.', 'cgc-contests'),
+					'fields' 		=> array(
+						array(
+							'id' 	=> 'question',
+							'name' 	=> __('Question', 'cgc-contests'),
+							'type' 	=> 'text'
+						),
+						array(
+							'id' 	=> 'answer',
+							'name' 	=> __('Answer', 'cgc-contests'),
+							'type' 	=> 'wysiwyg',
+							'options' => array(
+								'textarea_rows' => 5
+							)
+						)
+					)
 				)
 			)
 		);
