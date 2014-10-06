@@ -126,9 +126,7 @@
 	<!-- Contest Modal -->
 	<div id="cgc-contest-form" class="reveal-modal" data-reveal>
 		<h3 class="reveal-modal-header">Entry Submission</h3>
-		<?php
-			gravity_form($gform[0], false, false, false, null, true);
-		?>
+		<?php gravity_form($gform[0], false, true, false, null, true);?>
 		<a class="close-reveal-modal">&#215;</a>
 	</div>
 </div>
