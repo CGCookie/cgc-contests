@@ -145,9 +145,6 @@
 		padding-left:0;
 		padding-right:0;
 
-		ul,ol {
-			@include clearfix();
-		}
 	}
 	.cgc-contest-awards {
 		@include clearfix();
@@ -162,6 +159,15 @@
 
 				p {
 					margin-bottom:0;
+				}
+
+				ul,ol {
+					@include clearfix();
+				}
+
+				li {
+					width:50%;
+					padding:0;
 				}
 			}
 
