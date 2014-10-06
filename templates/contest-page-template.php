@@ -2,6 +2,8 @@
 
 <?php
 
+if ( have_posts() ) : while ( have_posts() ) : the_post();
+
 	// get meta
 	$rules 			= cgc_contest_meta( get_the_ID(),'_cgc_contest_rules' );
 	$sponsors 		= cgc_contest_meta( get_the_ID(), '_cgc_contest_sponsors' );
@@ -39,13 +41,7 @@
 
 			<div class="cgc-contest-info">
 				<div class="cgc-contest-inner cgc-contest-back">
-					<?php
-
-					while ( have_posts() ) : the_post();
-					the_content();
-					endwhile;
-
-					?>
+					<?php the_content();?>
 				</div>
 			</div>
 			<div class="cgc-contest-sidebar">
@@ -131,6 +127,8 @@
 	</div>
 </div>
 
+<?php endwhile;endif;
 
 
-<?php get_footer();?>
+
+get_footer();?>
