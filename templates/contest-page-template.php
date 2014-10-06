@@ -171,14 +171,7 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
 	<!-- Contest Modal -->
 	<div id="cgc-contest-form" class="reveal-modal" data-reveal>
 		<h3 class="reveal-modal-header">Entry Submission</h3>
-		<?php 
-
-
-		echo 'gform-id-'.$gform;
-
-		gravity_form($gform, false, true, false, null, true);
-
-		?>
+		<?php gravity_form($gform, false, true, false, null, true);?>
 		<a class="close-reveal-modal">&#215;</a>
 	</div>
 </div>
