@@ -74,6 +74,7 @@
 .cgc-contest-main {
 	@include clearfix();
 	margin-bottom:$margin;
+	position:relative;
 
 	h3 {
 		margin-top:0;
@@ -87,6 +88,13 @@
 	}
 	.cgc-contest-sidebar {
 		@include column(4);
+		position:absolute;
+		right:0;
+		bottom:0;
+		top:0;
+		.cgc-contest-inner {
+			height:100%;
+		}
 	}
 }
 
