@@ -135,7 +135,7 @@ class cgcContestsMeta {
  			remove_meta_box( 'commentsdiv' , 		'page' , 'normal' );
  			remove_meta_box( 'authordiv' , 			'page' , 'normal' );
 			remove_meta_box( 'pageparentdiv' , 		'page' , 'normal' );
-			remove_meta_box( 'rcp_meta_box' , 		'page' , 'normal' );
+			//remove_meta_box( 'rcp_meta_box' , 		'page' , 'normal' );
 
 		endif;
 	}

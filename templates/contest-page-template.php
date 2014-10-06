@@ -39,7 +39,13 @@
 
 			<div class="cgc-contest-info">
 				<div class="cgc-contest-inner cgc-contest-back">
-					<?php the_content();?>
+					<?php
+
+					while ( have_posts() ) : the_post();
+					the_content();
+					endwhile;
+
+					?>
 				</div>
 			</div>
 			<div class="cgc-contest-sidebar">
