@@ -13,8 +13,8 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
 	$banner     	= wp_get_attachment_url($banner_src,'full');
 	$accent_color   = cgc_contest_meta( get_the_ID(), '_cgc_contest_color' );
 
-	$gform			= cgc_contest_meta( get_the_ID(), '_cgc_contest_gform_id' );
-	$gfield			= cgc_contest_meta( get_the_ID(), '_cgc_contest_gform_field' );
+	$gform			= get_post_meta( get_the_ID(), '_cgc_contest_gform_id', true );
+	$gfield			= get_post_meta( get_the_ID(), '_cgc_contest_gform_field', true );
 
 	$expires       = get_post_meta( get_the_ID(), '_cgc_contest_expiration', true );
 
@@ -114,7 +114,7 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
 		<section class="cgc-contest-recent-entries">
 			<div class="cgc-contest-inner cgc-contest-back">
 				<h3>Recent Challenge Entries</h3>
-				<?php echo do_shortcode('[cgc_contest id="'.$gform[0].'" position="'.$gfield[0].'"]');?>
+				<?php echo do_shortcode('[cgc_contest id="'.$gform.'" position="'.$gfield.'"]');?>
 			</div>
 		</section>
 
@@ -122,7 +122,7 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
 	<!-- Contest Modal -->
 	<div id="cgc-contest-form" class="reveal-modal" data-reveal>
 		<h3 class="reveal-modal-header">Entry Submission</h3>
-		<?php gravity_form($gform[0], false, true, false, null, true);?>
+		<?php gravity_form($gform, false, true, false, null, true);?>
 		<a class="close-reveal-modal">&#215;</a>
 	</div>
 </div>
