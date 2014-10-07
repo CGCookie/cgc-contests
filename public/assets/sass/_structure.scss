@@ -219,32 +219,39 @@
 
 }
 
-.cgc-contest-page .cgc-contest-awards-wrap{
-	.cgc-contest-2-extra-awards {
-		margin-top:$margin;
+.cgc-contest-page {
 
-		li {
-			width:50%;
-			padding-right:15px;
+	.cgc-contest-sponsors-wrap,
+	.cgc-contest-awards-wrap{
 
-			&:first-child {
-				padding-right:7px;
-			}
-			&:nth-child(2) {
-				padding-left:7px;
+		.cgc-contest-2-sponsors,
+		.cgc-contest-2-extra-awards {
+			margin-top:$margin;
+
+			li {
+				width:50%;
+				padding-right:15px;
+
+				&:first-child {
+					padding-right:7px;
+				}
+				&:nth-child(2) {
+					padding-left:7px;
+				}
 			}
 		}
-	}
-	.cgc-contest-1-extra-awards {
-		margin-top:$margin;
+		.cgc-contest-1-sponsors,
+		.cgc-contest-1-extra-awards {
+			margin-top:$margin;
 
-		li {
-			width:100%;
-			float:none;
-			display:block;
-			padding-right:15px;
-			&:first-child {
-				margin-bottom:$margin;
+			li {
+				width:100%;
+				float:none;
+				display:block;
+				padding-right:15px;
+				&:first-child {
+					margin-bottom:$margin;
+				}
 			}
 		}
 	}

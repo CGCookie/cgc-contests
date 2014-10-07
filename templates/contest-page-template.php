@@ -7,9 +7,12 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
 	// get meta
 	$rules 			= cgc_contest_meta( get_the_ID(),'_cgc_contest_rules' );
 	$sponsors 		= cgc_contest_meta( get_the_ID(), '_cgc_contest_sponsors' );
+	$count_sponsors = count($sponsors);
+
 	$awards  		= cgc_contest_meta( get_the_ID(),'_cgc_contest_awards' );
 	$extra_awards  	= cgc_contest_meta( get_the_ID(),'_cgc_contest_extra_awards' );
 	$count_extra_awards = count($extra_awards);
+
 	$faqs  			= cgc_contest_meta( get_the_ID(),'_cgc_contest_faq' );
 	$subtitle       = cgc_contest_meta( get_the_ID(), '_cgc_contest_subtitle');
 	$banner_src   	= get_post_meta( get_the_ID(), '_cgc_contest_banner', true );
@@ -77,7 +80,7 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
 			<div class="cgc-contest-inner cgc-contest-back">
 				<h4>The sponsors behind the challenge</h4>
 
-				<ul class="cgc-contest-sponsor-logos">
+				<ul class="cgc-contest-sponsor-logos cgc-contest-<?php echo $count_sponsors;?>-sponsors">
 					<?php
 						if ( $sponsors ):
 
