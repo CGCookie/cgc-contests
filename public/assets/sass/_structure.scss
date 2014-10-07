@@ -171,10 +171,13 @@
 		li {
 			@include column(4);
 			margin-bottom:0;
+			position:relative;
+
 			.cgc-contest-award-inner {
 				margin-bottom:0;
 				background:lighten($black,3%);
 				padding:15px;
+				position:relative;
 
 				p {
 					margin-bottom:0;

@@ -99,7 +99,7 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
 
 		<section class="cgc-contest-awards-wrap">
 			<div class="cgc-contest-inner cgc-contest-back">
-				<ul class="cgc-contest-awards">
+				<ul id="cgc-contest-main-awards" class="cgc-contest-awards">
 					<?php
 						if ( $awards ):
 
