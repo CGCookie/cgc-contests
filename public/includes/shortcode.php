@@ -62,8 +62,12 @@ class cgcContestsShortcode {
 		$entries = GFAPI::get_entries( $id );
 
 		// bail if no data
-		if ( !$id || !$url || !$entries )
+		if ( !$id || !$url )
 			return;
+
+
+		if ( !$entries )
+			echo 'No entries yet, be the first to enter by submitting your entry above!';
 
 		$i = 0;
 		foreach ( $entries as $entry ){
