@@ -231,12 +231,13 @@ class CGC_Contests {
 
 
 	    if ( cgc_contest_meta( get_the_ID(), '_cgc_contest_page' ) )
-		//$theme 		= wp_get_theme();
-		//$get_name  	=  strtolower( $theme->get( 'Name' ) );
-		//$name 		= str_replace(' ', '-', $get_name );
+		$theme 		= wp_get_theme();
+
+		$get_name  	=  $theme ? strtolower( $theme->name ) : null;
+		$name 		= str_replace(' ', '-', $get_name );
 
 		$classes[] = 'cgc-contest-page';
-		//$classes[] = 'contest-page-on-'.$name;
+		$classes[] = 'contest-page-on-'.$name;
 
 		return $classes;
 	}
