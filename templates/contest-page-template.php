@@ -11,6 +11,8 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
 
 	$awards  		= cgc_contest_meta( get_the_ID(),'_cgc_contest_awards' );
 	$extra_awards  	= cgc_contest_meta( get_the_ID(),'_cgc_contest_extra_awards' );
+
+	$count_awards   = count( $awards );
 	$count_extra_awards = count($extra_awards);
 
 	$faqs  			= cgc_contest_meta( get_the_ID(),'_cgc_contest_faq' );
@@ -80,7 +82,7 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
 			<div class="cgc-contest-inner cgc-contest-back">
 				<h4>The sponsors behind the challenge</h4>
 
-				<ul class="cgc-contest-sponsor-logos cgc-contest-<?php echo $count_sponsors;?>-sponsors">
+				<ul class="cgc-contest-sponsor-logos cgc-contest-<?php echo $count_sponsors;?>-blocks">
 					<?php
 						if ( $sponsors ):
 
@@ -102,7 +104,7 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
 
 		<section class="cgc-contest-awards-wrap">
 			<div class="cgc-contest-inner cgc-contest-back">
-				<ul id="cgc-contest-main-awards" class="cgc-contest-awards">
+				<ul id="cgc-contest-main-awards" class="cgc-contest-awards cgc-contest-<?php echo $count_awards;?>-blocks">
 					<?php
 						if ( $awards ):
 
@@ -116,7 +118,7 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
 
 					?>
 				</ul>
-				<ul class="cgc-contest-awards cgc-contest-extra-awards cgc-contest-<?php echo $count_extra_awards;?>-extra-awards">
+				<ul class="cgc-contest-awards cgc-contest-extra-awards cgc-contest-<?php echo $count_extra_awards;?>-blocks">
 					<?php
 
 						if ( $extra_awards ):
