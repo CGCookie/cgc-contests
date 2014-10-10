@@ -78,6 +78,14 @@
 
 }
 
+#cgc-contest-form {
+	.gform_wrapper {
+		margin:0;
+		width:100%;
+		max-width:100%;
+	}
+}
+
 
 .cgc-contest-recent-entries,
 .cgc-contest-main {
@@ -94,6 +102,10 @@
 	.cgc-contest-info {
 		@include column(8);
 		padding-right:0;
+
+		h1:first-of-type {
+			margin-top:0;
+		}
 	}
 	.cgc-contest-sidebar {
 		@include column(4);

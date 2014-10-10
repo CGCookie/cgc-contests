@@ -2,8 +2,21 @@
 	.cgc-contest-back {
 		background:white;
 	}
+
+	.cgc-contest-header h1 {
+		text-shadow:none;
+	}
 	.cgc-contest-awards-wrap .cgc-contest-awards li .cgc-contest-award-inner {
 		background:darken(white,3);
+	}
+	.reveal-modal-header,
+	.cgc-contest-recent-entries h3,
+	.cgc-contest-sidebar h3 {
+		background: #f6f6f7;
+		padding: 15px 15px 10px;
+		position:relative;
+		margin:-15px -15px 15px;
+		border-bottom:none;
 	}
 	.page-content-inner {
 		max-width:1024px;
@@ -11,5 +24,23 @@
 	}
 	.cgc-contest-faq-wrap {
 		text-shadow:0 1px 1px rgba(255,255,255,0.8);
+	}
+
+	#cgc-contest-form {
+		.gform_wrapper .top_label input.medium, .gform_wrapper .top_label select.medium {
+			width:100%;
+		}
+		.gform_heading {
+			border-bottom:none;
+			margin-bottom:0;
+		}
+
+		.reveal-modal-header {
+			margin:-30px -30px 25px;
+		}
+		.close-reveal-modal {
+			top:16px;
+			text-shadow:none;
+		}
 	}
 }
