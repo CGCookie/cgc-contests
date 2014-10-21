@@ -144,11 +144,9 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
 			<div class="cgc-contest-inner cgc-contest-back">
 				<h3>Recent Challenge Entries</h3>
 				<a class="cgc-contest-all-entries" href="<?php echo $entries_page;?>">View all entries <i class="icon icon-caret-right"></i></a>
-<<<<<<< HEAD
+
 				<?php echo do_shortcode('[cgc_contest id="'.$gform.'" position="'.$gfield.'" limit="9"]');?>
-=======
-				<?php echo do_shortcode('[cgc_contest id="'.$gform.'" position="'.$gfield.'" limit="9" ]');?>
->>>>>>> feature/cmb2-migration
+
 			</div>
 		</section>
 
