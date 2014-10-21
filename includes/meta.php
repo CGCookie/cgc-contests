@@ -3,8 +3,36 @@
 class cgcContestsMeta {
 
 	function __construct(){
-		add_filter('cmb_meta_boxes', array($this,'meta' ));
+		add_filter('cmb2_meta_boxes', array($this,'meta' ));
 		add_action( 'admin_init', array($this,'remove_meta' ));
+		add_action('admin_head', array($this, 'hide_meta'));
+	}
+
+	function hide_meta(){
+		?>
+		<!-- CGC Contest Meta -->
+		<script>
+			jQuery(document).ready(function($){
+
+				var el 		= $('#_cgc_contest_page'),
+					meta 	= $('#cgc_contest_page_setup');
+
+				// hide the contest page setup metabox
+				$(meta).hide();
+
+				// if the box for contest page is checked show the meta on click
+				$(el).click(function () {
+				    $(meta).toggle(this.checked);
+				});
+
+				// if the page is reloaded and its checked show the meta
+				if ( $(el).is(':checked') )
+				    $(meta).show();
+				else
+					$(meta).hide();
+			});
+		</script>
+		<?php
 	}
 
 	/**
@@ -15,10 +43,13 @@ class cgcContestsMeta {
 	function meta( array $meta_boxes ) {
 
 		$meta_boxes[] = array(
+			'id'									=> 'cgc_contest_page',
 			'title' 								=> __('Contest Page', 'cgc-contests'),
-			'pages' 								=> array('page'),
+			'object_types' 								=> array('page'),
 			'context'    							=> 'side',
 			'priority'								=> 'low',
+			'show_names'							=> false,
+			'inline'								=> true,
 			'fields' 								=> array(
 				array(
 					'id' 							=> '_cgc_contest_page',
@@ -29,8 +60,9 @@ class cgcContestsMeta {
 		);
 
 		$meta_boxes[] = array(
+			'id'	=> 'cgc_contest_page_setup',
 			'title' => __('Contest Setup', 'cgc-contests'),
-			'pages' => array('page'),
+			'object_types' => array('page'),
 			'fields' => array(
 				array(
 					'id'			=> '_cgc_contest_gform_id',
@@ -49,34 +81,30 @@ class cgcContestsMeta {
 				array(
 					'id'			=> '_cgc_contest_expiration',
 					'name'			=> 'Contest Expiration Date',
-					'type'			=> 'date',
+					'type'			=> 'text_date',
 					'desc'			=> 'Choose an expiration date for this contest.',
 					'cols'			=> 4
 				),
 				array(
 					'id' 			=> '_cgc_contest_banner',
 					'name' 			=> __('Contest Banner Image', 'cgc-contests'),
-					'type' 			=> 'image',
+					'type' 			=> 'file',
 					'desc'			=> __('Upload a banner image for this contest. This can be different from the featured image that is picked up on social networks.', 'cgc-contests'),
 					'cols'			=> 6
 				),
 				array(
 					'id'						=> '_cgc_contest_subtitle',
 					'name'						=> 'Contest Subtitle',
-					'type'						=> 'textarea',
+					'type'						=> 'textarea_small',
 					'desc'						=> 'Add some text to be displayed beneath the main page title.',
 					'cols'						=> 6
 				),
 				array(
 					'id'						=> '_cgc_contest_entries_page',
 					'name'						=> 'Contest Entries Page',
-					'type'						=> 'colorpicker',
 					'cols'						=> 6,
-					'type'     					=> 'post_select',
-					'use_ajax'					 => false,
-					'query' 					=> array( 
-					    'post_type' => 'page'
-					),
+					'type'     					=> 'select',
+					'options'					=> cgc_get_posts_for_cmb( array( 'post_type' => 'page' )),
 					'desc'						=> 'Choose the page that has the contest entries.'
 				),
 				array(
@@ -89,7 +117,7 @@ class cgcContestsMeta {
 				array(
 					'id' 			=> '_cgc_contest_rules',
 					'name' 			=> __('Contest Rules', 'cgc-contests'),
-					'type' 			=> 'textarea',
+					'type' 			=> 'textarea_small',
 					'repeatable'     => true,
 					'repeatable_max' => 20,
 					'sortable'		=> true,
@@ -99,21 +127,26 @@ class cgcContestsMeta {
 					'id' 			=> '_cgc_contest_sponsors',
 					'name' 			=> __('Contest Sponsors', 'cgc-contests'),
 					'type' 			=> 'group',
+					'options'     => array(
+						'group_title'   => __( 'Sponsor {#}', 'cgc-contests' ), // {#} gets replaced by row number
+						'add_button'    => __( 'Add Another Sponsor', 'cgc-contests' ),
+						'remove_button' => __( 'Remove Sponsor', 'cgc-contests' ),
+						'sortable'      => true
+					),
 					'repeatable'     => true,
 					'repeatable_max' => 20,
-					'sortable'		=> true,
 					'desc'			=> __('Add a logo and link for each sponsor of this contest.', 'cgc-contests'),
 					'fields' 		=> array(
 						array(
 							'id' 	=> 'img',
-							'name' 	=> __('Image', 'cgc-contests'),
-							'type' 	=> 'image',
+							'name' 	=> __('Logo', 'cgc-contests'),
+							'type' 	=> 'file',
 							'cols'	=> 4
 						),
 						array(
 							'id' 	=> 'link',
-							'name' 	=> __('Link', 'cgc-contests'),
-							'type' 	=> 'url',
+							'name' 	=> __('Website', 'cgc-contests'),
+							'type' 	=> 'text_url',
 							'cols'	=> 8
 						)
 					)
@@ -123,7 +156,8 @@ class cgcContestsMeta {
 					'name' 			=> __('Contest Awards', 'cgc-contests'),
 					'type' 			=> 'wysiwyg',
 					'options' => array(
-					      'textarea_rows' => 5
+						'textarea_rows' => 5,
+						'media_buttons'	=> false
 					),
 					'repeatable'     => true,
 					'repeatable_max' => 3,
@@ -135,7 +169,8 @@ class cgcContestsMeta {
 					'name' 			=> __('Extra Awards', 'cgc-contests'),
 					'type' 			=> 'wysiwyg',
 					'options' => array(
-					      'textarea_rows' => 5
+						'textarea_rows' => 5,
+						'media_buttons'	=> false
 					),
 					'repeatable'     => true,
 					'repeatable_max' => 2,
@@ -146,7 +181,14 @@ class cgcContestsMeta {
 					'id' 			=> '_cgc_contest_faq',
 					'name' 			=> __('Frequently Asked Questions', 'cgc-contests'),
 					'type' 			=> 'group',
+					'options'     => array(
+						'group_title'   => __( 'FAQ {#}', 'cgc-contests' ), // {#} gets replaced by row number
+						'add_button'    => __( 'Add Another FAQ', 'cgc-contests' ),
+						'remove_button' => __( 'Remove FAQ', 'cgc-contests' ),
+						'sortable'      => true
+					),
 					'repeatable'     => true,
+					'repeatable_max' => 20,
 					'sortable'		=> true,
 					'desc'			=> __('Add a question and accompanying answer.', 'cgc-contests'),
 					'fields' 		=> array(
@@ -160,14 +202,14 @@ class cgcContestsMeta {
 							'name' 	=> __('Answer', 'cgc-contests'),
 							'type' 	=> 'wysiwyg',
 							'options' => array(
-								'textarea_rows' => 5
+								'textarea_rows' => 5,
+								'media_buttons'	=> false
 							)
 						)
 					)
 				)
 			)
 		);
-
 		return $meta_boxes;
 
 	}
