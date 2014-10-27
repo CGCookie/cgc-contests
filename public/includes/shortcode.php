@@ -58,8 +58,10 @@ class cgcContestsShortcode {
 	// get entries from gravity forms api
 	function cgc_contest_get_entries( $id = 0 , $url = '', $limit = '' ){
 
+		$paging = array('offset' => 0, 'page_size' => 100 );
+
 		// get entries via GF api with entry id
-		$entries = GFAPI::get_entries( $id );
+		$entries = GFAPI::get_entries( $id, '', null, $paging );
 
 		// bail if no data
 		if ( !$id || !$url )
