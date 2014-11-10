@@ -32,6 +32,13 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
 
 	$entries_page  = $all_entries ? get_permalink($all_entries[0]) : null;
 
+	// banner bleed
+	$banner_bleed = cgc_contest_meta( get_the_ID(), '_cgc_contest_banner_contain', true);
+	$banner_bleed = $banner_bleed ? 'banner-contain' : 'banner-bleed';
+
+	// banner text
+	$banner_txt_color = cgc_contest_meta( get_the_ID(), '_cgc_contest_banner_txt_color', true);
+
 
 ?>
 <style>
@@ -40,11 +47,13 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
 .page-id-<?php echo get_the_ID();?>.cgc-contest-page .page-content a:not(.button){color:<?php echo esc_html( $accent_color[0] );?>;}
 .page-id-<?php echo get_the_ID();?>.cgc-contest-page .page-content .button{background:<?php echo esc_html( $accent_color[0] );?>;}
 
+.page-id-<?php echo get_the_ID();?>.cgc-contest-page .cgc-contest-header-inner h1,
+.page-id-<?php echo get_the_ID();?>.cgc-contest-page .cgc-contest-header-inner h2 {color:<?php echo esc_html( $banner_txt_color[0] ) ;?>;}
 </style>
-<div class="page-content">
+<div class="page-content <?php echo sanitize_html_class($banner_bleed);?>">
 
 	<section class="cgc-contest-header">
-		<div class="cgc-contest-header-inner">
+		<div class="cgc-contest-header-inner ">
 			<?php the_title('<h1>','</h1>');?>
 			<?php if ( $subtitle ) { ?>
 				<h2><?php echo esc_html( $subtitle[0] );?></h2>

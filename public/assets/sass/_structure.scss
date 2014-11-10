@@ -7,12 +7,37 @@
 	}
 	.page-content {
 		position:relative;
-		top:-15px;
 
-		.page-content-inner {
-			padding:0 15px;
+		&.banner-bleed {
+			top:-15px;
+
+			.page-content-inner {
+				padding:0 15px;
+				position:relative;
+				top:-150px;
+			}
+
+		}
+
+		&.banner-contain {
 			position:relative;
-			top:-150px;
+
+			.page-content-inner {
+				padding-top:15px;
+			}
+
+			.cgc-contest-header {
+				width:100%;
+				max-width:970px;
+				margin:0 auto;
+				height:340px;
+				padding-bottom:0;
+			}
+
+			.cgc-contest-header-img {
+				margin:0 auto;
+				background-size:cover;
+			}
 		}
 	}
 	.styled-list{

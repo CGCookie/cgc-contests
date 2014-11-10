@@ -93,6 +93,20 @@ class cgcContestsMeta {
 					'cols'			=> 6
 				),
 				array(
+					'id' 			=> '_cgc_contest_banner_contain',
+					'name' 			=> __('Contain Banner Image', 'cgc-contests'),
+					'type' 			=> 'checkbox',
+					'desc'			=> __('By default banner will be full-bleed. Checking this box will contain the image into the column.', 'cgc-contests'),
+					'cols'			=> 6
+				),
+				array(
+					'id' 			=> '_cgc_contest_banner_txt_color',
+					'name' 			=> __('Contain Banner Text Color', 'cgc-contests'),
+					'type' 			=> 'colorpicker',
+					'desc'			=> __('Optionally change the color of the banner text.', 'cgc-contests'),
+					'cols'			=> 6
+				),
+				array(
 					'id'						=> '_cgc_contest_subtitle',
 					'name'						=> 'Contest Subtitle',
 					'type'						=> 'textarea_small',
