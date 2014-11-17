@@ -7,48 +7,47 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
 	// fix backwards compatibility with the move to cmb2
 
 	// get meta
-	$rules 			= cgc_contest_meta( get_the_ID(),'_cgc_contest_rules' );
-	$sponsors 		= cgc_contest_meta( get_the_ID(), '_cgc_contest_sponsors' );
+	$rules 			= get_post_meta( get_the_ID(),'_cgc_contest_rules',true);
+	$sponsors 		= get_post_meta( get_the_ID(), '_cgc_contest_sponsors', true );
 	$count_sponsors = count($sponsors);
 
-	$awards  		= cgc_contest_meta( get_the_ID(),'_cgc_contest_awards' );
-	$extra_awards  	= cgc_contest_meta( get_the_ID(),'_cgc_contest_extra_awards' );
+	$awards  		= get_post_meta( get_the_ID(),'_cgc_contest_awards', true );
+	$extra_awards  	= get_post_meta( get_the_ID(),'_cgc_contest_extra_awards', true );
 
 	$count_awards   = count( $awards );
 	$count_extra_awards = count($extra_awards);
 
-	$faqs  			= cgc_contest_meta( get_the_ID(),'_cgc_contest_faq' );
-	$subtitle       = cgc_contest_meta( get_the_ID(), '_cgc_contest_subtitle');
+	$faqs  			= get_post_meta( get_the_ID(),'_cgc_contest_faq', true );
+	$subtitle       = get_post_meta( get_the_ID(), '_cgc_contest_subtitle', true);
 	$banner_src   	= get_post_meta( get_the_ID(), '_cgc_contest_banner', true );
-	//$banner     	= wp_get_attachment_image_src($banner_src,'full');
-	$accent_color   = cgc_contest_meta( get_the_ID(), '_cgc_contest_color' );
+
+	$accent_color   = get_post_meta( get_the_ID(), '_cgc_contest_color', true );
 
 	$gform			= get_post_meta( get_the_ID(), '_cgc_contest_gform_id', true );
 	$gfield			= get_post_meta( get_the_ID(), '_cgc_contest_gform_field', true );
 
 	$expires       = get_post_meta( get_the_ID(), '_cgc_contest_expiration', true );
 
-	$all_entries	= cgc_contest_meta( get_the_ID(), '_cgc_contest_entries_page' );
+	$all_entries	= get_post_meta( get_the_ID(), '_cgc_contest_entries_page', true );
 
 	$entries_page  = $all_entries ? get_permalink($all_entries[0]) : null;
 
 	// banner bleed
-	$banner_bleed = cgc_contest_meta( get_the_ID(), '_cgc_contest_banner_contain', true);
+	$banner_bleed = get_post_meta( get_the_ID(), '_cgc_contest_banner_contain', true);
 	$banner_bleed = $banner_bleed ? 'banner-contain' : 'banner-bleed';
 
 	// banner text
-	$banner_txt_color = cgc_contest_meta( get_the_ID(), '_cgc_contest_banner_txt_color', true);
-
+	$banner_txt_color = get_post_meta( get_the_ID(), '_cgc_contest_banner_txt_color', true);
 
 ?>
 <style>
 .page-id-<?php echo get_the_ID();?> .cgc-contest-rules li:before,
 .page-id-<?php echo get_the_ID();?>.cgc-contest-page .styled-list li:before,
-.page-id-<?php echo get_the_ID();?>.cgc-contest-page .page-content a:not(.button){color:<?php echo esc_html( $accent_color[0] );?>;}
-.page-id-<?php echo get_the_ID();?>.cgc-contest-page .page-content .button{background:<?php echo esc_html( $accent_color[0] );?>;}
+.page-id-<?php echo get_the_ID();?>.cgc-contest-page .page-content a:not(.button){color:<?php echo esc_html( $accent_color );?>;}
+.page-id-<?php echo get_the_ID();?>.cgc-contest-page .page-content .button{background:<?php echo esc_html( $accent_color );?>;}
 
 .page-id-<?php echo get_the_ID();?>.cgc-contest-page .cgc-contest-header-inner h1,
-.page-id-<?php echo get_the_ID();?>.cgc-contest-page .cgc-contest-header-inner h2 {color:<?php echo esc_html( $banner_txt_color[0] ) ;?>;}
+.page-id-<?php echo get_the_ID();?>.cgc-contest-page .cgc-contest-header-inner h2 {color:<?php echo esc_html( $banner_txt_color ) ;?>;}
 </style>
 <div class="page-content <?php echo sanitize_html_class($banner_bleed);?>">
 
@@ -56,7 +55,7 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
 		<div class="cgc-contest-header-inner ">
 			<?php the_title('<h1>','</h1>');?>
 			<?php if ( $subtitle ) { ?>
-				<h2><?php echo esc_html( $subtitle[0] );?></h2>
+				<h2><?php echo esc_html( $subtitle );?></h2>
 			<?php } ?>
 		</div>
 		<div class="cgc-contest-header-img" style="background-image:url('<?php echo esc_url( $banner_src );?>');"></div>
@@ -81,7 +80,7 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
 
 									$getrule = isset( $rule ) ? $rule : null;
 
-									printf('<li>%s</li>', esc_html( $getrule[0] ) );
+									printf('<li>%s</li>', $getrule );
 
 								endforeach;
 
@@ -92,67 +91,61 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
 			</div>
 
 		</section>
-		<section class="cgc-contest-sponsors-wrap ">
-			<div class="cgc-contest-inner cgc-contest-back">
-				<h4>The sponsors behind the challenge</h4>
 
-				<ul class="cgc-contest-sponsor-logos cgc-contest-<?php echo absint( $count_sponsors );?>-sponsors">
+		<?php if ( !empty( $sponsors ) ): ?>
+			<section class="cgc-contest-sponsors-wrap ">
+				<div class="cgc-contest-inner cgc-contest-back">
+					<h4>The sponsors behind the challenge</h4>
 
-					<?php
-						if ( $sponsors ):
+						<ul class="cgc-contest-sponsor-logos cgc-contest-<?php echo absint( $count_sponsors );?>-sponsors">
 
-							foreach ( (array) $sponsors as $key => $sponsor ):
+							<?php foreach ( (array) $sponsors as $key => $sponsor ):
 
-								$getimg = $img = $link = '';
+								$img 	= $link = '';
+								$img 	= isset( $sponsor['img'] ) ? sprintf('<img src="%s">',$sponsor['img']) : null;
+								$link   = isset( $sponsor['link'] ) ? $sponsor['link'] : null;
 
-								$getimg = isset( $sponsor['img'] ) ? $sponsor['img'] : null;
-								$img    = wp_get_attachment_image($getimg,'full');
-								$link   = isset( $sponsor['link'] ) ? $sponsor['img'] : null;
-
-								printf('<li><a href="%s">%s</a></li>', esc_url( $link ), esc_url( $img ) );
+								printf('<li><a href="%s">%s</a></li>', esc_url( $link ), $img );
 
 							endforeach;
 
-						endif;
-					?>
-				</ul>
-			</div>
-		</section>
+							?>
+						</ul>
 
-		<section class="cgc-contest-awards-wrap">
-			<div class="cgc-contest-inner cgc-contest-back">
-				<ul id="cgc-contest-main-awards" class="cgc-contest-awards cgc-contest-<?php echo $count_awards;?>-blocks">
-					<?php
-						if ( $awards ):
+				</div>
+			</section>
+		<?php endif; ?>
 
-							foreach ( (array) $awards as $key => $award ):
+		<?php if ( !empty( $awards ) || !empty($extra_awards) ): ?>
+			<section class="cgc-contest-awards-wrap">
+				<div class="cgc-contest-inner cgc-contest-back">
+
+					<?php if ( !empty( $awards ) ): ?>
+						<ul id="cgc-contest-main-awards" class="cgc-contest-awards cgc-contest-<?php echo $count_awards;?>-blocks">
+
+							<?php foreach ( (array) $awards as $key => $award ):
 
 								printf('<li><div class="cgc-contest-award-inner">%s</div></li>', wpautop($award) );
 
-							endforeach;
+							endforeach; ?>
 
-						endif;
+						</ul>
+					<?php endif;
 
-					?>
-				</ul>
+					if ( !empty( $extra_awards ) ): ?>
+						<ul class="cgc-contest-awards cgc-contest-extra-awards cgc-contest-<?php echo absint( $count_extra_awards );?>-extra-awards">
 
-				<ul class="cgc-contest-awards cgc-contest-extra-awards cgc-contest-<?php echo absint( $count_extra_awards );?>-extra-awards">
-
-					<?php
-
-						if ( $extra_awards ):
-
-							foreach ( (array) $extra_awards as $key => $extra_award ):
+							<?php foreach ( (array) $extra_awards as $key => $extra_award ):
 
 								printf('<li><div class="cgc-contest-award-inner">%s</div></li>', wpautop($extra_award) );
 
-							endforeach;
+							endforeach;?>
 
-						endif;
-					?>
-				</ul>
-			</div>
-		</section>
+						</ul>
+					<?php endif; ?>
+				</div>
+			</section>
+		<?php endif; ?>
 
 		<div class="cgc-contest-cta-wrap">
 			<a href="cgc-contest-form" data-reveal-id="cgc-contest-form" class="button cgc-open-contest-modal">Submit your entry</a>
