@@ -114,6 +114,13 @@ class cgcContestsMeta {
 					'cols'						=> 6
 				),
 				array(
+					'id' 			=> '_cgc_contest_disable_entries',
+					'name' 			=> __('Disable the Entries portion', 'cgc-contests'),
+					'type' 			=> 'checkbox',
+					'desc'			=> __('By default the entries submission will show, checking this will hide the feature completely.', 'cgc-contests'),
+					'cols'			=> 6
+				),
+				array(
 					'id'						=> '_cgc_contest_entries_page',
 					'name'						=> 'Contest Entries Page',
 					'cols'						=> 6,

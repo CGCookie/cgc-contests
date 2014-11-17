@@ -39,6 +39,9 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
 	// banner text
 	$banner_txt_color = get_post_meta( get_the_ID(), '_cgc_contest_banner_txt_color', true);
 
+	// disable entries
+	$entries_disabled = get_post_meta( get_the_ID(), '_cgc_contest_disable_entries', true);
+
 ?>
 <style>
 .page-id-<?php echo get_the_ID();?> .cgc-contest-rules li:before,
@@ -147,6 +150,7 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
 			</section>
 		<?php endif; ?>
 
+		<?php if ( !$entries_disabled ): ?>
 		<div class="cgc-contest-cta-wrap">
 			<a href="cgc-contest-form" data-reveal-id="cgc-contest-form" class="button cgc-open-contest-modal">Submit your entry</a>
 			<p>Entries must be recieved by <?php echo esc_html( $expires );?></p>
@@ -161,6 +165,7 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
 
 			</div>
 		</section>
+		<?php endif; ?>
 
 		<section class="cgc-contest-faq-wrap">
 			<div class="cgc-contest-inner">
