@@ -168,7 +168,7 @@ class cgcContestsMeta {
 				array(
 					'id' 			=> '_cgc_contest_awards',
 					'name' 			=> __('Contest Awards', 'cgc-contests'),
-					'type' 			=> 'wysiwyg',
+					'type' 			=> 'textarea',
 					'options' => array(
 						'textarea_rows' => 5,
 						'media_buttons'	=> false
@@ -181,7 +181,7 @@ class cgcContestsMeta {
 				array(
 					'id' 			=> '_cgc_contest_extra_awards',
 					'name' 			=> __('Extra Awards', 'cgc-contests'),
-					'type' 			=> 'wysiwyg',
+					'type' 			=> 'textarea',
 					'options' => array(
 						'textarea_rows' => 5,
 						'media_buttons'	=> false
