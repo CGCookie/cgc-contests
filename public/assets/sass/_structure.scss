@@ -7,12 +7,37 @@
 	}
 	.page-content {
 		position:relative;
-		top:-15px;
 
-		.page-content-inner {
-			padding:0 15px;
+		&.banner-bleed {
+			top:-15px;
+
+			.page-content-inner {
+				padding:0 15px;
+				position:relative;
+				top:-150px;
+			}
+
+		}
+
+		&.banner-contain {
 			position:relative;
-			top:-150px;
+
+			.page-content-inner {
+				padding-top:15px;
+			}
+
+			.cgc-contest-header {
+				width:100%;
+				max-width:970px;
+				margin:0 auto;
+				height:340px;
+				padding-bottom:0;
+			}
+
+			.cgc-contest-header-img {
+				margin:0 auto;
+				background-size:cover;
+			}
 		}
 	}
 	.styled-list{
@@ -78,6 +103,14 @@
 
 }
 
+#cgc-contest-form {
+	.gform_wrapper {
+		margin:0;
+		width:100%;
+		max-width:100%;
+	}
+}
+
 
 .cgc-contest-recent-entries,
 .cgc-contest-main {
@@ -94,6 +127,10 @@
 	.cgc-contest-info {
 		@include column(8);
 		padding-right:0;
+
+		h1:first-of-type {
+			margin-top:0;
+		}
 	}
 	.cgc-contest-sidebar {
 		@include column(4);
@@ -150,10 +187,6 @@
 				margin:0 auto;
 			}
 
-			&:first-child,
-			&:nth-child(2) {
-				padding-right:0;
-			}
 		}
 	}
 }
@@ -209,11 +242,6 @@
 					}
 				}
 			}
-
-			&:first-child,
-			&:nth-child(2) {
-				padding-right:0;
-			}
 		}
 	}
 
@@ -221,40 +249,45 @@
 
 .cgc-contest-page {
 
-	.cgc-contest-sponsors-wrap,
-	.cgc-contest-awards-wrap{
+	.cgc-contest-1-blocks{
+		margin-top:$margin;
 
-		.cgc-contest-2-sponsors,
-		.cgc-contest-2-extra-awards {
-			margin-top:$margin;
+		li {
+			width:100%;
+			float:none;
+			display:block;
+			padding-right:15px;
 
-			li {
-				width:50%;
-				padding-right:15px;
-
-				&:first-child {
-					padding-right:7px;
-				}
-				&:nth-child(2) {
-					padding-left:7px;
-				}
-			}
 		}
-		.cgc-contest-1-sponsors,
-		.cgc-contest-1-extra-awards {
-			margin-top:$margin;
+	}
+	.cgc-contest-2-blocks{
 
-			li {
-				width:100%;
-				float:none;
-				display:block;
-				padding-right:15px;
-				&:first-child {
-					margin-bottom:$margin;
-				}
+		li {
+			width:50%;
+			padding-right:15px;
+
+			&:first-child {
+				padding-right:7px;
+			}
+			&:nth-child(2) {
+				padding-left:7px;
 			}
 		}
 	}
+	.cgc-contest-3-blocks{
+
+		li {
+			width:33.333%;
+			padding-right:15px;
+
+			&:first-child {
+				padding-right:7px;
+			}
+			&:nth-child(2) {
+				padding-left:7px;
+			}
+		}
+	}	
 }
 
 .cgc-contest-faq-wrap {

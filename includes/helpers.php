@@ -10,7 +10,15 @@
 if ( !function_exists('cgc_contest_meta') ):
 	function cgc_contest_meta( $post_id = 0 , $key = ' ') {
 
-	  	$out = get_post_meta( $post_id, $key, false );
+ 		$post_date = get_the_date('mdy', $post_id);
+   		$post_date = strtotime( $post_date );
+
+		// old quiz new quiz migration
+		if ( $post_date < strtotime(101714) ){
+	  		$out = get_post_meta( $post_id, $key, false );
+	  	} else {
+	  		$out = get_post_meta( $post_id, $key, true );
+	  	}
 
 	  	return empty( $out ) ? null : $out;
 
