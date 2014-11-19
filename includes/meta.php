@@ -125,7 +125,7 @@ class cgcContestsMeta {
 					'name'						=> 'Contest Entries Page',
 					'cols'						=> 6,
 					'type'     					=> 'select',
-					'options'					=> cgc_get_posts_for_cmb( array( 'post_type' => 'page' )),
+					'options'					=> function_exists('cgc_get_posts_for_cmb') ? cgc_get_posts_for_cmb( array( 'post_type' => 'page' )) : null,
 					'desc'						=> 'Choose the page that has the contest entries.'
 				),
 				array(
